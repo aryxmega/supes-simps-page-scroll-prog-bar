@@ -1,2 +1,3 @@
-# supes-simps-page-scroll-progress
-A super simple page scroll progress functionality
+# Supes Simps: Page Scroll Progress Bar
+
+A super simple page scroll progress bar.
