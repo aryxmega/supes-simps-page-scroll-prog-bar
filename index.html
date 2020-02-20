@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        
+        <title>Supes Simps: Page Scroll Progress Bar</title>
+
+        <style>
+            body { 
+                padding: 40px;
+            }
+
+            .content  {
+                background: #ffffff;
+                font-size: 24px;
+                line-height: 1.6;
+                margin: 0 auto;
+                min-height: 1988px;
+                padding: 40px;
+                width: 640px;
+            }
+
+            .progress_bar  {
+                background: #ff1133;
+                height: 8px;
+                left: 0;
+                position: fixed;
+                top: 0;
+                transition: 0.5s cubic-bezier(0.072, 0.80, 0.164, 1) width;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="progress_bar"></div>
+
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim suspendisse in est ante in nibh. Suscipit adipiscing bibendum est ultricies integer quis. Molestie nunc non blandit massa enim nec dui nunc. Magna fringilla urna porttitor rhoncus dolor purus non enim. Lectus arcu bibendum at varius vel. Iaculis nunc sed augue lacus viverra vitae congue eu. Amet nisl purus in mollis nunc. Non odio euismod lacinia at quis risus. Tristique et egestas quis ipsum suspendisse ultrices. Enim ut tellus elementum sagittis vitae et. Bibendum enim facilisis gravida neque convallis a cras. Metus aliquam eleifend mi in nulla posuere.</p>
+
+            <p>Luctus venenatis lectus magna fringilla urna porttitor. Enim praesent elementum facilisis leo vel fringilla est ullamcorper eget. Vitae semper quis lectus nulla at volutpat. Posuere morbi leo urna molestie. Mi quis hendrerit dolor magna eget. Justo donec enim diam vulputate ut pharetra. Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus. Turpis in eu mi bibendum. At volutpat diam ut venenatis tellus in. Orci ac auctor augue mauris augue neque gravida in. Dignissim enim sit amet venenatis urna cursus. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Urna molestie at elementum eu. Et ultrices neque ornare aenean euismod elementum. Mi tempus imperdiet nulla malesuada.</p>
+                
+            <p>Hendrerit gravida rutrum quisque non tellus orci ac auctor. Elementum nisi quis eleifend quam adipiscing vitae proin. Vitae tortor condimentum lacinia quis vel eros donec ac odio. Enim neque volutpat ac tincidunt vitae semper quis. Consectetur purus ut faucibus pulvinar elementum integer enim. Malesuada fames ac turpis egestas sed tempus urna et. Curabitur vitae nunc sed velit dignissim sodales. Nulla malesuada pellentesque elit eget gravida. Integer eget aliquet nibh praesent tristique. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Arcu non sodales neque sodales. Nibh cras pulvinar mattis nunc sed blandit libero. In cursus turpis massa tincidunt dui ut. Quis eleifend quam adipiscing vitae proin. Tincidunt tortor aliquam nulla facilisi cras fermentum odio. Non diam phasellus vestibulum lorem. Vestibulum sed arcu non odio. Elementum facilisis leo vel fringilla est ullamcorper.</p>
+                
+            <p>Pellentesque massa placerat duis ultricies lacus sed. Lobortis scelerisque fermentum dui faucibus. Diam maecenas sed enim ut. Pharetra vel turpis nunc eget lorem dolor. Ipsum consequat nisl vel pretium lectus quam id. Cras semper auctor neque vitae tempus quam pellentesque nec. Dolor purus non enim praesent elementum facilisis leo. Pretium nibh ipsum consequat nisl vel pretium. Mauris ultrices eros in cursus turpis massa tincidunt dui. Ultrices dui sapien eget mi proin sed libero enim sed. Praesent semper feugiat nibh sed pulvinar proin gravida. Faucibus purus in massa tempor nec feugiat nisl. Eu volutpat odio facilisis mauris sit amet massa. Etiam non quam lacus suspendisse faucibus interdum posuere. Eu lobortis elementum nibh tellus molestie nunc non. Ultrices neque ornare aenean euismod elementum nisi quis eleifend quam. Pellentesque habitant morbi tristique senectus. Non consectetur a erat nam at lectus urna duis. Et tortor consequat id porta nibh venenatis.</p>
+                
+            <p>Neque sodales ut etiam sit amet nisl purus in. Eu ultrices vitae auctor eu augue. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Potenti nullam ac tortor vitae purus faucibus. Aliquet bibendum enim facilisis gravida neque. Duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Sed euismod nisi porta lorem. Mauris ultrices eros in cursus. Tellus molestie nunc non blandit massa. Cursus mattis molestie a iaculis at erat pellentesque. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Arcu ac tortor dignissim convallis aenean et. Nunc congue nisi vitae suscipit. Diam phasellus vestibulum lorem sed risus ultricies. Rhoncus dolor purus non enim praesent elementum. Viverra maecenas accumsan lacus vel facilisis volutpat est velit. Quis vel eros donec ac odio tempor. Vehicula ipsum a arcu cursus. Justo laoreet sit amet cursus sit amet dictum. Pellentesque sit amet porttitor eget dolor morbi non arcu.</p>
+        </div>
+
+        <script>
+            const progress_line = document.querySelector('.progress_bar');
+
+            function progress() {
+                const window_height    = window.innerHeight;
+                const page_height      = document.body.clientHeight;
+                const scrolled        = window.scrollY;
+                const scroll_percentage = (scrolled / (page_height - window_height)) * 100;
+
+                progress_line.style.width = `${scroll_percentage}%`;
+            }
+
+            window.addEventListener('scroll', debounce(progress));
+
+            function debounce(func, wait = 15, immediate) {
+                var timeout;
+
+                return function() {
+                    var context = this, args = arguments;
+                    var later = function() {
+                        timeout = null;
+                        
+                        if (!immediate) func.apply(context, args);
+                    };
+
+                    var callNow = immediate && !timeout;
+
+                    clearTimeout(timeout);
+                    
+                    timeout = setTimeout(later, wait);
+                    
+                    if (callNow) func.apply(context, args);
+                };
+            }
+        </script>
+    </body>
+</html>
