@@ -51,15 +51,13 @@
             const progress_line = document.querySelector('.progress_bar');
 
             function progress() {
-                const window_height    = window.innerHeight;
-                const page_height      = document.body.clientHeight;
-                const scrolled        = window.scrollY;
-                const scroll_percentage = (scrolled / (page_height - window_height)) * 100;
+                const window_height         = window.innerHeight;
+                const page_height           = document.body.clientHeight;
+                const scrolled              = window.scrollY;
+                const scroll_percentage     = (scrolled / (page_height - window_height)) * 100;
 
-                progress_line.style.width = `${scroll_percentage}%`;
+                progress_line.style.width   = `${scroll_percentage}%`;
             }
-
-            window.addEventListener('scroll', debounce(progress));
 
             function debounce(func, wait = 15, immediate) {
                 var timeout;
@@ -81,6 +79,8 @@
                     if (callNow) func.apply(context, args);
                 };
             }
+
+            window.addEventListener('scroll', debounce(progress));
         </script>
     </body>
 </html>
